@@ -36,6 +36,7 @@ export class AuthGuardGuard implements CanActivate {
       const userData:any= JSON.parse(localStorage.getItem("userData") || "false")
       let validation:Promise<boolean> =  this.flag(userData)        
       return validation  
+      
   }
 
  
