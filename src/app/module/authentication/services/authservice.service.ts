@@ -15,8 +15,8 @@ export class AuthserviceService {
       return this.http.post(this.url+'login',data);
   }
 
-   authToken(token:string){   
-      return new Promise((resolve,reject)=>{
+  async authToken(token:string){   
+      return  await new Promise((resolve,reject)=>{
         this.http.post(`${this.url}token?token=${token}`,"").subscribe(result =>{
           resolve(result)
         })

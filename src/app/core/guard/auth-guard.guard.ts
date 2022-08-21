@@ -16,35 +16,28 @@ export class AuthGuardGuard implements CanActivate {
   
   constructor(private authDb: AuthserviceService, private route:Router){}
 
- async flag(userData:userDataI ):Promise<boolean>{
-   let  validation = false;
+ async flag(userData:any):Promise<boolean>{
+   let  validation = true;
+ 
     if(!userData){
-      return validation;  
+      console.log("user data no valid")
+      this.route.navigate(['/','login'])         
     }
    
   await this.authDb.authToken(userData.token).then((res:any)=>{    
-     validation = res
-   })
-
+    if(!res)
+    this.route.navigate(['/','login']) 
+   })   
    return validation
   }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
-      const userData:userDataI  = JSON.parse(localStorage.getItem("userData") || "")
+      const userData:any= JSON.parse(localStorage.getItem("userData") || "false")
 
-      let validation:Promise<boolean> =  this.flag(userData)       
-      
-
-      if(!validation)
-      this.route.navigate(["/"])    
-
-    alert(validation.then(res=>alert(res)))
-    return true
-    
-
-   
+      let validation:Promise<boolean> =  this.flag(userData)        
+    return validation  
 
   }
 
