@@ -1,16 +1,10 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { catchError, from, iif, map, Observable, of, switchMap } from 'rxjs';
 import { AuthserviceService } from 'src/app/module/authentication/services/authservice.service';
 
-interface userDataI{  
-  id:number,
-  fullName:string,
-  idRole : number,
-  token :string
-}
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthGuardGuard implements CanActivate {
   
