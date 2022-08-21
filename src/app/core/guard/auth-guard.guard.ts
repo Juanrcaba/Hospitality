@@ -1,31 +1,46 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router, UrlTree } from '@angular/router';
-import { catchError, from, iif, map, Observable, of, switchMap } from 'rxjs';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { Observable } from 'rxjs';
 import { AuthserviceService } from 'src/app/module/authentication/services/authservice.service';
 
+interface userDataI{  
+  id:number,
+  fullName:string,
+  idRole : number,
+  token :string
+}
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class AuthGuardGuard implements CanActivate {
-  constructor(
-    private readonly authDb: AuthserviceService,
-    private readonly router: Router
-  ) {}
+  
+  constructor(private authDb: AuthserviceService, private route:Router){}
 
-  canActivate(): Observable<boolean | UrlTree> {
-    const userData = JSON.parse(localStorage.getItem('userData') || 'false');
-
-    return from(userData).pipe(
-      switchMap((data) =>
-        iif(
-          () => !!data,
-          of(true),
-          this.authDb.authToken(userData.token).pipe(
-            catchError(() => of(this.router.createUrlTree(['/login']))),
-            map(() => this.router.createUrlTree(['/login']))
-          )
-        )
-      )
-    );
+ async flag(userData:any):Promise<boolean>{
+   let  validation = true;
+ 
+    if(!userData){
+      console.log("user data no valid")
+      this.route.navigate(['/','login'])         
+    }
+   
+  await this.authDb.authToken(userData.token).then((res:any)=>{    
+    if(!res)
+    this.route.navigate(['/','login']) 
+   })   
+   return validation
   }
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    
+      const userData:any= JSON.parse(localStorage.getItem("userData") || "false")
+
+      let validation:Promise<boolean> =  this.flag(userData)        
+    return validation  
+
+  }
+
+ 
+  
 }
