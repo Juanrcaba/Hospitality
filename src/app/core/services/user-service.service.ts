@@ -1,27 +1,15 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-interface userDataI{  
-    id:number,
-    fullName:string,
-    idRole : number,
-    token :string
-}
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserServiceService {
+  private readonly userData = new BehaviorSubject<string>('');
+  userData$ = this.userData.asObservable();
+  constructor() {}
 
-  userData$ = new  BehaviorSubject<string>("")
-  constructor() {
-  
-   }
-
-  get getData(){
-    return this.userData$.asObservable()
-  }
-
-  set setData(data:string){
-    this.userData$.next(data)
+  set setData(data: string) {
+    this.userData.next(data);
   }
 }
