@@ -33,12 +33,9 @@ export class AuthGuardGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    
       const userData:any= JSON.parse(localStorage.getItem("userData") || "false")
-
       let validation:Promise<boolean> =  this.flag(userData)        
-    return validation  
-
+      return validation  
   }
 
  
