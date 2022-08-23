@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-main',
@@ -6,10 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
+  @ViewChild('sidenav') sidenav!:ElementRef<MatSidenav> 
+  options = this._formBuilder.group({
+    bottom: 20,
+    fixed: true,
+    top: 0,
+    title:true
+  });
 
-  constructor() { }
+  constructor(private _formBuilder: FormBuilder) {}
+  
 
   ngOnInit(): void {
   }
+
+  
 
 }

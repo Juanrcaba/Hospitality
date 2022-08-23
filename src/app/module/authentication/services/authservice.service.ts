@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
-import { Login, User, UserRequest } from 'src/app/core/models/user-model';
-import { UserServiceService } from 'src/app/core/services/user-service.service';
+import { catchError, map, of } from 'rxjs';
+import {  User, UserRequest } from '@Core/models/user-model';
+import { UserServiceService } from '@Core/services/user-service.service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,16 +15,17 @@ export class AuthserviceService {
     private readonly UserSvc:UserServiceService
     ) {}
 
-  login(data: any) {
-    console.log("inicio de proceso loging")
-    console.log(data)
+  login(data: any) {   
    return this.http.post<UserRequest>(this.url + 'login', data).pipe(
-      map((res:UserRequest)=>{
-        this.saveToken(res.token);
-        this.saveUserData(res)
+     map((res:UserRequest)=>{    
+       if(res){
+       this.saveToken(res.token);
+       this.saveUserData(res)        
+       }
       })
+     
     );
-  // return this.http.post<UserRequest>(this.url + 'login', data)
+ 
   }
 
   private saveToken(token:string):void{

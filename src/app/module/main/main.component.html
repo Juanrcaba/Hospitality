@@ -1,1 +1,54 @@
-<p>main works!</p>
+
+    <mat-sidenav-container class="example-container">
+      <mat-sidenav #sidenav mode="side" opened 
+      [fixedInViewport]="options.value.fixed" [fixedTopGap]="options.value.top"
+      [fixedBottomGap]="options.value.bottom">
+      <span></span>
+                   <h1 class="title">HMS</h1>
+                   <ul class="nav-link">
+                    <li>                      
+                      <a href="#">
+                        <mat-icon>dashboard</mat-icon>
+                        Dashboard
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#"><mat-icon>calendar_today</mat-icon>Reservation</a>
+                    </li>
+                    <li>
+                      <a href="#"><mat-icon>room_service</mat-icon>Reception</a>
+                    </li>
+                   </ul>
+       <a href="#" class="logo">
+        <!-- <img src="./../../../assets/images/logo.png" alt=""> -->
+        
+       </a>
+      </mat-sidenav>
+  
+      <mat-sidenav-content [formGroup]="options"> 
+        <mat-toolbar class="mat-elevation-z8">
+            <button mat-icon-button (click)="sidenav.toggle()" matTooltip="Menu"
+            matTooltipPosition="right">
+              <mat-icon>menu</mat-icon>            
+            </button>
+           <div class="menu">
+            <button mat-icon-button [matMenuTriggerFor]="menu"  matTooltip="Perfil"
+            matTooltipPosition="before">
+              <mat-icon>account_circle</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>
+                <mat-icon>power_off</mat-icon>
+                <span>Disconect</span>
+              </button>
+            </mat-menu>
+           </div>
+          </mat-toolbar>  
+          <div class="router">
+            <router-outlet></router-outlet>
+          </div>     
+
+    </mat-sidenav-content>
+    </mat-sidenav-container>
+    
+    

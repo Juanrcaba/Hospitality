@@ -1,0 +1,102 @@
+
+
+mat-sidenav-container{
+    position: relative;
+    
+    mat-sidenav{        
+        height: 100vh;
+        border-top-right-radius: 50px;
+       
+        background-color: blue;
+        border: none;
+        width: 200px;
+        display: flex;
+        justify-content: center;       
+        
+        .title{
+            height: 50px;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .nav-link{
+            list-style: none;
+            padding-left: 10px;
+            li{
+                position: relative;
+                padding-left:20px ;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                border-top-left-radius: 10px;              
+                border-bottom-left-radius: 10px;
+          
+              a{
+                  text-decoration: none;
+                  color: white;
+                  font-size: 20px;
+                  display: flex;
+                  align-items: center;
+
+                  mat-icon{
+                    margin-right: 10px;
+                  }
+                 
+                  
+              }
+              
+             
+            }
+            li:hover{    
+                background-color: #FAFAFA;
+                a{                 
+                    color: black;                 
+                 }
+            }
+            li:hover::before{
+                content: "";
+                position: absolute;
+                height: 30px;
+                width: 30px;
+                background-color: blue;
+                bottom: 100%;
+                right: 0;
+                border-bottom-right-radius: 13px;
+                box-shadow: 0 17px 0 #FAFAFA;
+                z-index: -10;
+                
+            }
+            li:hover::after{
+                content: "";
+                position: absolute;
+                height: 30px;
+                width: 30px;
+              background-color: blue;
+                top: 100%;
+                right: 0;
+                border-top-right-radius: 13px;
+                box-shadow: 0 -17px 0#FAFAFA;
+                z-index: -10;
+            }
+        }
+    }
+    mat-sidenav-content{
+
+        mat-toolbar {
+            display: flex;
+            justify-content: space-between;
+            background-color: #FAFAFA;
+            border: 0px solid rgb(66, 64, 64);
+            box-shadow: 0 -7px 5px rgb(107, 103, 103) ridge;
+          z-index: 100;
+        }
+        .router{
+            background-color:#FAFAFA;
+            padding: 20px;
+            height: calc(100vh - 110px);
+        }
+       
+    }
+}
+

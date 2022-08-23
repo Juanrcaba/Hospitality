@@ -1,8 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './main.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
-const routes: Routes = [{ path: '', component: MainComponent }];
+const routes: Routes = [
+  { path: '', component: MainComponent,  
+  children:[
+    {path:'',redirectTo:'dashboard',pathMatch:'full'},
+    {path:'side',component: SidebarComponent},
+    { path: 'dashboard', loadChildren: () => import('../dashboard/dashboard.module').then(m => m.DashboardModule) } ,
+  ]
+ },
+
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
