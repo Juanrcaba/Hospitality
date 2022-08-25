@@ -1,1 +1,47 @@
-<p>reservations works!</p>
+
+<div class="container" style="padding-left: 50px ;padding-right: 50px ;">  
+   
+  <div class="maintenance">
+    <mat-form-field appearance="fill" class="search">
+        <mat-label>Search</mat-label>
+        <input type="search" matInput [(ngModel)]="myFilter" (ngModelChange)="filterWord()">
+        <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+    <button mat-raised-button color="primary">New <mat-icon>add</mat-icon></button>
+  </div>
+    <ul class="responsive-table">
+      <li class="table-header " color="primary">
+        <div class="col col-1" >Reservation Code</div>
+        <div class="col col-2">Customer Name</div>
+        <div class="col col-3">Pax</div>
+        <div class="col col-4">Room Category</div>
+        <div class="col col-5">CheckIn Date</div>
+        <div class="col col-6">CheckOut Date</div>
+        <div class="col col-7">Payment Status</div>
+        <div class="col col-8">Action</div>     
+      </li>
+      <div class="data">        
+        <li class="table-rows mat-elevation-z8" *ngFor="let element of auxData ">
+          <div class="col col-1" data-label="Reservation Code">{{element.reservationCode}}</div>
+        <div class="col col-2" data-label="Customer Name">{{element.fullName}}</div>
+        <div class="col col-3" data-label="Pax">{{element.pax }}</div>
+        <div class="col col-4" data-label="Room Category">{{element.categoryRoom}}</div>
+        <div class="col col-5" data-label="CheckIn Date">{{element.checkInDate}}</div>
+        <div class="col col-6" data-label="CheckOut Date">{{element.checkOutDate}}</div>       
+        <div class="col col-7" data-label="Payment Status"><span>{{element.statusValue}}</span></div>
+        <div class="col col-8" data-label="Action" >
+          <div class="btn-container" style=" display: flex; justify-content: center; align-items: center;">
+            <button mat-mini-fab color="warn" style="width: 30px; height:30px; display: flex; justify-content: center; align-items: center;margin-right: 10px;">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <!-- <button mat-mini-fab color="warn" style="width: 30px; height:30px; display: flex; justify-content: center; align-items: center;">
+              <mat-icon>delete</mat-icon>
+            </button> -->
+          </div>
+        </div>
+      </li>
+    </div>
+     
+     
+    </ul>
+  </div>

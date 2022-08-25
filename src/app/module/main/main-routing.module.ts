@@ -9,9 +9,9 @@ const routes: Routes = [
     {path:'',redirectTo:'dashboard',pathMatch:'full'},
     {path:'side',component: SidebarComponent},
     { path: 'dashboard', loadChildren: () => import('../dashboard/dashboard.module').then(m => m.DashboardModule) } ,
+    { path: 'reservation', loadChildren: () => import('../reservations/reservations.module').then(m => m.ReservationsModule) },
   ]
  },
-  { path: 'reservation', loadChildren: () => import('../reservations/reservations.module').then(m => m.ReservationsModule) },
 
 ];
 
