@@ -4,18 +4,27 @@ import { CommonModule } from '@angular/common';
 import { ReservationsRoutingModule } from './reservations-routing.module';
 import { ReservationsComponent } from './reservations.component';
 import { MaterialModule } from '@Material/material.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddComponent } from './pages/add/add.component';
+import { FiltroPipe } from '@Core/pipe/filter.pipe';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+
 
 
 @NgModule({
   declarations: [
-    ReservationsComponent
+    ReservationsComponent,
+    AddComponent,
+    FiltroPipe
+   
   ],
   imports: [
     CommonModule,
     ReservationsRoutingModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    SweetAlert2Module.forRoot()
   ]
 })
 export class ReservationsModule { }

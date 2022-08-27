@@ -6,7 +6,7 @@ import { MainComponent } from './main.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MaterialModule } from '@Material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     MainRoutingModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SweetAlert2Module.forRoot()
   ]
 })
 export class MainModule { }

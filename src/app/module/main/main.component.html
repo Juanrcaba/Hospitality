@@ -1,28 +1,27 @@
 
     <mat-sidenav-container class="example-container">
-      <mat-sidenav #sidenav [mode]="estado" closed 
+      <mat-sidenav #sidenav [mode]="sideNavMode" closed 
       [fixedInViewport]="options.value.fixed" [fixedTopGap]="options.value.top"
       [fixedBottomGap]="options.value.bottom">
       <span></span>
                    <h1 class="title">HMS</h1>
                    <ul class="nav-link">
                     <li>                      
-                      <a routerLink="dashboard">
+                      <a routerLink="dashboard"  (click)="sideNavMode == 'over' ? sidenav.toggle() : false; changeTitle(Dashboard.innerHTML)"  >
                         <mat-icon>dashboard</mat-icon>
-                        Dashboard
+                       <span #Dashboard>Dashboard</span> 
                       </a>
                     </li>
                     <li>
-                      <a routerLink="reservation"><mat-icon>calendar_today</mat-icon>Reservation</a>
+                      <a routerLink="reservation" (click)="sideNavMode == 'over' ? sidenav.toggle() : false"><mat-icon>calendar_today</mat-icon>Reservation</a>
                     </li>
                     <li>
-                      <a routerLink="reservation"><mat-icon>room_service</mat-icon>Reception</a>
+                      <a [swal]="['Oops!', 'This is not implemented yet :/', 'warning']" (click)="sideNavMode == 'over' ? sidenav.toggle() : false"><mat-icon>room_service</mat-icon>Reception</a>
                     </li>
                    </ul>
-       <a href="#" class="logo">
-        <!-- <img src="./../../../assets/images/logo.png" alt=""> -->
-        
-       </a>
+       <!-- <a href="#" class="logo">
+         <img src="./../../../assets/images/logo.png" alt="">         
+       </a>  -->
       </mat-sidenav>
   
       <mat-sidenav-content [formGroup]="options"> 
@@ -53,5 +52,4 @@
 
     </mat-sidenav-content>
     </mat-sidenav-container>
-    
     

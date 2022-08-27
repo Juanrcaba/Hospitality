@@ -10,11 +10,12 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatCardModule} from '@angular/material/card';
 
+
 const modules = [MatCardModule,MatMenuModule, MatTooltipModule,MatFormFieldModule,MatInputModule,MatIconModule,MatButtonModule,MatSidenavModule,MatToolbarModule]
 
 @NgModule({
  
-  imports: [...modules],
-  exports:[...modules]
+  imports: [...modules ],
+  exports:[...modules,]
 })
 export class MaterialModule { }

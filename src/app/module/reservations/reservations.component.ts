@@ -1,22 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { reservationData } from '@Core/models/reservation.model';
+import { FiltroPipe } from '@Core/pipe/filter.pipe';
 
-interface reservationData{
-  reservationCode:string,                                                     
-  fullName:string,                             
-  pax :number,
-  checkInDate :string,
-  checkOutDate :string,                                                
-  statusValue :string,
-  categoryRoom :string
-}
+
+
 @Component({
   selector: 'app-reservations',
   templateUrl: './reservations.component.html',
   styleUrls: ['./reservations.component.scss']
 })
 export class ReservationsComponent implements OnInit {
-
+@ViewChild('nextbutton') nextButton!: ElementRef
   constructor() { }
+  page: number = 0;
   myFilter:string = '';
   auxData!:reservationData[]
   data:reservationData[]=[ 
@@ -67,7 +63,7 @@ export class ReservationsComponent implements OnInit {
     },
     {
       reservationCode:"42205",
-      fullName:"John Doe",
+      fullName:"Juan ramon santos caba",
       pax:350,
       checkInDate:"8/09/2022",
       checkOutDate:"8/09/2022",
@@ -157,20 +153,35 @@ export class ReservationsComponent implements OnInit {
     },
  ]
   ngOnInit(): void {
-    this.auxData = this.data.map(a=>a);
+    this.auxData = this.data;
+  }
+  applyFilter(event: string) {
+     this.page -= this.page
+    this.myFilter = event
+    this.nextButton.nativeElement.on('click',()=>{
+     alert('hola')
+    })
+  
+  }
+  prevPage(){
+    if(this.page != 0)
+    this.page -=10
+  }
+  nextPage(){    
+    this.page +=10
   }
   
-  filterWord() {
-  this.auxData = []
-    this.data.map((e, i) => {      
-      if (
-        e.reservationCode.toLowerCase().indexOf(this.myFilter.toLowerCase()) != -1 ||
-        e.fullName.toLowerCase().indexOf(this.myFilter.toLowerCase()) != -1 
-      ) {
-        this.auxData.push(this.data[i]);
+  // filterWord() {
+  // this.auxData = []
+  //   this.data.map((e, i) => {      
+  //     if (
+  //       e.reservationCode.toLowerCase().includes(this.myFilter.toLowerCase())  ||
+  //       e.fullName.toLowerCase().includes(this.myFilter.toLowerCase())
+  //     ) {
+  //       this.auxData.push(this.data[i]);
         
-      }
-    });
-  }
+  //     }
+  //   });
+ // }
 
 }

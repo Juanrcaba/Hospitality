@@ -1,0 +1,27 @@
+*{
+    font-size: 1rem;
+}
+.disable{
+    pointer-events: none;
+}
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #002B5C;
+    vertical-align: top;
+    color:white;
+    border-top-left-radius:10px;
+    border-top-right-radius:10px;
+   
+}
+.form-container{
+    margin-top: 10px;
+    color:black;
+}
+button{
+    background-color: #002B5C;
+    font-size: 1rem;
+    height: 50px;
+    color:white
+}
