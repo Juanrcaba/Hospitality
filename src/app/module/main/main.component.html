@@ -13,10 +13,16 @@
                       </a>
                     </li>
                     <li>
-                      <a routerLink="reservation" (click)="sideNavMode == 'over' ? sidenav.toggle() : false"><mat-icon>calendar_today</mat-icon>Reservation</a>
+                      <a routerLink="reservation" (click)="sideNavMode == 'over' ? sidenav.toggle() : false;changeTitle(Reservation.innerHTML)">
+                        <mat-icon>calendar_today</mat-icon>
+                        <span #Reservation>Reservation</span>
+                      </a>
                     </li>
                     <li>
-                      <a [swal]="['Oops!', 'This is not implemented yet :/', 'warning']" (click)="sideNavMode == 'over' ? sidenav.toggle() : false"><mat-icon>room_service</mat-icon>Reception</a>
+                      <a href="#" [swal]="['Oops!', 'This is not implemented yet :/', 'warning']" (click)="sideNavMode == 'over' ? sidenav.toggle() : false">
+                        <mat-icon>room_service</mat-icon>
+                        <span #Reception>Reception</span>
+                      </a>
                     </li>
                    </ul>
        <!-- <a href="#" class="logo">

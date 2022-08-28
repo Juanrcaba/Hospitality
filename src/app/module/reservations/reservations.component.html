@@ -7,7 +7,8 @@
         <input #search type="search" matInput (keyup)="applyFilter(search.value)" autocomplete="off">
         <mat-icon matSuffix >search</mat-icon>
     </mat-form-field>
-    <button mat-raised-button color="primary" [swal]="['Oops!', 'This is not implemented yet :/', 'warning']">New <mat-icon>add</mat-icon></button>
+    <button mat-raised-button color="primary" [routerLink]="['/addReservation']" >New <mat-icon>add</mat-icon></button>
+    
   </div>
     <ul class="responsive-table">
       <li class="table-header " color="primary">
@@ -31,7 +32,7 @@
           <div class="col col-7" color="warn" data-label="Payment Status"><span>{{element.statusValue}}</span></div>
           <div class="col col-8" data-label="Action" >
           <div class="btn-container" style=" display: flex; justify-content: center; align-items: center;">
-            <button mat-mini-fab  style="width: 30px; height:30px; display: flex; justify-content: center; align-items: center;margin-right: 10px;">
+            <button mat-mini-fab  class="edit" style=" background-color: #c1c4c5; border-radius: 5px;" [swal]="['Oops!', 'This is not implemented yet :/', 'warning']">
               <mat-icon>edit</mat-icon>
             </button>           
           </div>

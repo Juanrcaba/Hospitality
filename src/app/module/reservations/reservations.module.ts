@@ -8,7 +8,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddComponent } from './pages/add/add.component';
 import { FiltroPipe } from '@Core/pipe/filter.pipe';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 
 @NgModule({
@@ -24,7 +25,10 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    SweetAlert2Module.forRoot()
+    SweetAlert2Module.forRoot(),
+    MatNativeDateModule,
+    MatDatepickerModule
+  
   ]
 })
 export class ReservationsModule { }

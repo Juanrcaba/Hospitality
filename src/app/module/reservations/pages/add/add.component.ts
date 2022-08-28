@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 
@@ -60,7 +60,7 @@ _action = "Save";
 _toDay = new Date();
 _startDate!:Date;
 
-  constructor(private builder:FormBuilder,  private route: Router) 
+  constructor(private builder:FormBuilder,  private route: Router,private activatedRoute:ActivatedRoute) 
   {
     
   }
@@ -68,7 +68,8 @@ _startDate!:Date;
 
 
   ngOnInit(): void {
-
+    console.log(this.activatedRoute)
+    // console.log(this.activatedRoute.snapshot.routeConfig?.path)
     this.addForm = this.builder.group({
       id:0,
       idStatusReserva:[2],

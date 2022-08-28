@@ -9,9 +9,13 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatCardModule} from '@angular/material/card';
+import {MatSelectModule} from '@angular/material/select';
 
 
-const modules = [MatCardModule,MatMenuModule, MatTooltipModule,MatFormFieldModule,MatInputModule,MatIconModule,MatButtonModule,MatSidenavModule,MatToolbarModule]
+
+
+
+const modules = [MatSelectModule,MatCardModule,MatMenuModule, MatTooltipModule,MatFormFieldModule,MatInputModule,MatIconModule,MatButtonModule,MatSidenavModule,MatToolbarModule]
 
 @NgModule({
  

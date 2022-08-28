@@ -1,106 +1,122 @@
-<div class="container-fluid">
+<div class="wrapper" >
    
-    <div class="main-container w-100">
-        <div class="header d-flex align-items-end justify-content-center text-center">
-            <img src="./../../../../../assets/images/calendar.png" alt="calendar" style="width: 60px;">
+    <div class="main-container mat-elevation-z8">
+        <div class="header">
+          <span class="material-icons">
+            event
+            </span>
             <h2>Rooms Reservations</h2>
         </div>
-        <div class="form-container">
+        
+          
            <form [formGroup]="addForm" (submit)="onSubmit()" noValidate>
             
-                <mat-form-field appearance="outline" class="w-75">
-                  <mat-label>Enter Fullname</mat-label>
-                  <input matInput placeholder="Placeholder" formControlName="nombreCompleto" required>
-                  <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>                 
-                </mat-form-field>             
+            <div class="guest-information mat-elevation-z8">
+              <div class="title">
+                <span>Guest Information</span>
+              </div>
+              <div class="information">
               
-                <mat-form-field appearance="outline" class="w-50 px-1">
-                  <mat-label>Email Address</mat-label>
-                  <input matInput placeholder="Placeholder" formControlName="email" required>
-                  <mat-icon matSuffix>email</mat-icon>                 
-                </mat-form-field>
-
-                <mat-form-field appearance="outline" class="w-50 px-1">
-                    <mat-label>Telephone / Mobile</mat-label>
-                    <input matInput placeholder="Placeholder" formControlName="telefono" >
-                    <mat-icon matSuffix>dialpad</mat-icon>                 
-                </mat-form-field>
-
-                 <!-- select tipo documento-->
-                 <!-- <mat-form-field appearance="outline" class="w-50 px-1 ">
-                  <mat-label>Document type</mat-label>
-                  <mat-select formControlName="idTipoDocumento"  required>
-                    <mat-option>--</mat-option>
-                    <mat-option *ngFor="let document of _documentType" [value]="document.id">
-                      {{document.name}}
-                    </mat-option>
-                  </mat-select>   -->
-
-                <!-- </mat-form-field> -->
-                <mat-form-field appearance="outline" class="w-50 px-1">
-                  <mat-label>No. Documento</mat-label>
-                  <input matInput placeholder="Placeholder" formControlName="noDocumento" required>
-                  <mat-icon matSuffix>insert_drive_file</mat-icon>                 
-                </mat-form-field>
-
-                <mat-form-field appearance="outline" class="w-50 px-1">
-                    <mat-label>Number of Adults</mat-label>
-                    <input matInput type="number" placeholder="Placeholder" min="1"  formControlName="numeroAdultos">
-                    <mat-icon matSuffix>group</mat-icon>                 
-                </mat-form-field>
-
-                <mat-form-field appearance="outline" class="w-50 px-1">
-                    <mat-label>Number of Children</mat-label>
-                    <input matInput type="number" placeholder="Placeholder" min="0" formControlName="numeroNinos">
-                    <mat-icon matSuffix>group</mat-icon>                 
-                </mat-form-field>
-                 
-               <!-- select -->
-                <!-- <mat-form-field appearance="outline" class="w-50 px-1 ">
-                  <mat-label>Room Category</mat-label>
-                  <mat-select formControlName="idCategory"  (selectionChange)="onChange($event)" required>
-                    <mat-option>--</mat-option>
-                    <mat-option *ngFor="let category of _categories" [value]="category.id">
-                      {{category.name}}
-                    </mat-option>
-                  </mat-select>                  
-                </mat-form-field> -->
-
-                  <mat-form-field appearance="outline" class="w-50 px-1 ">
-                    <mat-label>Price</mat-label>
-                    <input matInput placeholder="Placeholder"  formControlName="precio" readonly >
-                    <mat-icon matSuffix>attach_money</mat-icon>                 
-                  </mat-form-field>
-
-                  <!-- <mat-form-field appearance="outline" class="w-50 px-1">
-                    <mat-label>Check-in Date</mat-label>
-                    <input matInput [matDatepicker]="checkIn" formControlName="checkIn" [min]="_toDay" [(ngModel)]="_startDate" required>
-                    <mat-hint>MM/DD/YYYY</mat-hint>
-                    <mat-datepicker-toggle matSuffix [for]="checkIn"></mat-datepicker-toggle>
-                    <mat-datepicker #checkIn></mat-datepicker>
-                </mat-form-field>
-                 -->
-                <!-- <mat-form-field appearance="outline" class="w-50 px-1" [ngClass]="_startDate == undefined?'disable' :''">
-                    <mat-label>Check-out Date</mat-label>
-                    <input matInput [matDatepicker]="checkOut" placeholder="" [min]="_startDate" formControlName="checkOut" required>
-                    <mat-hint>MM/DD/YYYY</mat-hint>
-                    <mat-datepicker-toggle matSuffix [for]="checkOut"></mat-datepicker-toggle>
-                    <mat-datepicker #checkOut></mat-datepicker>
-                </mat-form-field> -->
-
-
-                <mat-form-field appearance="outline" class="w-100 mt-3">
-                    <mat-label>Note</mat-label>
-                    <textarea matInput placeholder="Let us know about any special accommodation needs" formControlName="notas" ></textarea>
-                    <mat-icon matSuffix>notes</mat-icon>                 
-                  </mat-form-field> 
-                  <button mat-button class="menu-button" name="juan">
-                    <span>{{_action}}</span>                    
-                  </button>     
-                          
-           </form>
+              <mat-form-field appearance="outline">
+                <mat-label>Enter Fullname</mat-label>
+                <input matInput placeholder="Placeholder" formControlName="nombreCompleto" required>
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>                 
+              </mat-form-field>             
           
-        </div> 
+              <mat-form-field appearance="outline" >
+                <mat-label>Email Address</mat-label>
+                <input matInput placeholder="Placeholder" formControlName="email" required>
+                <mat-icon matSuffix>email</mat-icon>                 
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" >
+                  <mat-label>Telephone / Mobile</mat-label>
+                  <input matInput placeholder="Placeholder" formControlName="telefono" >
+                  <mat-icon matSuffix>dialpad</mat-icon>                 
+              </mat-form-field>
+
+             <!-- select tipo documento-->
+              <mat-form-field appearance="outline" >
+                <mat-label>Document type</mat-label>
+                <mat-select formControlName="idTipoDocumento"  required>
+                  <mat-option></mat-option>
+                  <!-- <mat-option *ngFor="let document of _documentType" [value]="document.id">
+                    {{document.name}}
+                  </mat-option> -->
+                </mat-select>  
+              
+              </mat-form-field> 
+              <mat-form-field appearance="outline" >
+                <mat-label>No. Documento</mat-label>
+                <input matInput placeholder="Placeholder" formControlName="noDocumento" required>
+                <mat-icon matSuffix>insert_drive_file</mat-icon>                 
+              </mat-form-field>
+            </div>
+          </div>
+            <div class="reservation-information mat-elevation-z8">            
+              <div class="title">
+               <span>reservation Information</span> 
+              </div>
+              <div class="information">
+
+              
+              <mat-form-field appearance="outline" >
+                   <mat-label>Number of Adults</mat-label>
+                   <input matInput type="number" placeholder="Placeholder" min="1"  formControlName="numeroAdultos">
+                   <mat-icon matSuffix>group</mat-icon>                 
+               </mat-form-field>
+  
+               <mat-form-field appearance="outline" >
+                   <mat-label>Number of Children</mat-label>
+                   <input matInput type="number" placeholder="Placeholder" min="0" formControlName="numeroNinos">
+                   <mat-icon matSuffix>group</mat-icon>                 
+               </mat-form-field>
+                
+              <!-- select -->
+               <mat-form-field appearance="outline" >
+                 <mat-label>Room Category</mat-label>
+                 <mat-select formControlName="idCategory"  (selectionChange)="onChange($event)" required>
+                   <mat-option>--</mat-option>
+                   <mat-option *ngFor="let category of _categories" [value]="category.id">
+                     {{category.name}}
+                   </mat-option>
+                 </mat-select>                  
+               </mat-form-field>
+  
+                  <mat-form-field appearance="outline" >
+                   <mat-label>Price</mat-label>
+                   <input matInput placeholder="Placeholder"  formControlName="precio" readonly >
+                   <mat-icon matSuffix>attach_money</mat-icon>                 
+                 </mat-form-field>                
+  
+                 <mat-form-field appearance="outline" >
+                   <mat-label>Check-in Date</mat-label>
+                   <input matInput [matDatepicker]="checkIn" formControlName="checkIn" >
+                   <mat-hint>MM/DD/YYYY</mat-hint>
+                   <mat-datepicker-toggle matSuffix [for]="checkIn"></mat-datepicker-toggle>
+                   <mat-datepicker #checkIn></mat-datepicker>
+               </mat-form-field>
+             
+               <mat-form-field appearance="outline"  [ngClass]="_startDate == undefined?'disable' :''">
+                   <mat-label>Check-out Date</mat-label>
+                   <input matInput [matDatepicker]="checkOut" placeholder="" [min]="_startDate" formControlName="checkOut" required>
+                   <mat-hint>MM/DD/YYYY</mat-hint>
+                   <mat-datepicker-toggle matSuffix [for]="checkOut"></mat-datepicker-toggle>
+                   <mat-datepicker #checkOut></mat-datepicker>
+               </mat-form-field>  
+  
+               <mat-form-field appearance="outline"  class="note">
+                   <mat-label>Note</mat-label>
+                   <textarea matInput placeholder="Let us know about any special accommodation needs" formControlName="notas" ></textarea>
+                   <mat-icon matSuffix>notes</mat-icon>                 
+                </mat-form-field> 
+
+                 <button mat-button class="save-button" name="juan">
+                   <span>{{_action}}</span>                    
+                 </button>     
+              </div>
+            </div>               
+           </form>
     </div>
 </div>
 

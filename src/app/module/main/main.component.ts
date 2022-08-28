@@ -3,6 +3,7 @@ import { BreakpointObserver,Breakpoints } from '@angular/cdk/layout';
 import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import {  MatDrawerMode, MatSidenav } from '@angular/material/sidenav';
+
 import { tap } from 'rxjs';
 
 @Component({
@@ -12,7 +13,7 @@ import { tap } from 'rxjs';
 })
 export class MainComponent implements OnInit {
 
-  title = ''
+  title = 'Dashboard'
  @ViewChild("sidenav") sidenav!: ElementRef
   sideNavMode:MatDrawerMode = 'side'
   options = this._formBuilder.group({
@@ -24,18 +25,16 @@ export class MainComponent implements OnInit {
 
   constructor(private _formBuilder: FormBuilder, private breakpointObserver:BreakpointObserver,private renderer:Renderer2) {}
   readonly breakpoint$ = this.breakpointObserver
-  .observe([Breakpoints.Large, Breakpoints.Medium, Breakpoints.Small, '(min-width: 500px)'])
-  .pipe(
-    tap(value => console.log())
-   
-  );
+  .observe([Breakpoints.Large, Breakpoints.Medium, Breakpoints.Small, '(min-width: 500px)']);
+ 
 
   ngOnInit(): void {
     this.breakpoint$.subscribe(()=>this.breakpointChanged() )
     
+    
   }
-  changeTitle(event:string){
-    this.title = event
+  changeTitle(title:string){
+    this.title = title
   }
 
 
